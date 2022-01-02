@@ -47,6 +47,7 @@ app.post("/addRecord", function (req, res) {
               state: req.body.state,
               zip: req.body.zip,
               country: req.body.country,
+              src: req.body.src
             },
             function (err, result) {
               if (err) throw err;
@@ -77,6 +78,7 @@ app.post("/editRecord", function (req, res) {
         state: req.body.state,
         zip: req.body.zip,
         country: req.body.country,
+        src: req.body.src
       },
     };
     dbo
@@ -86,7 +88,6 @@ app.post("/editRecord", function (req, res) {
         else if (result["modifiedCount"] != 0)
           res.status(200).send("Record Edited Successfully");
         else res.status(401).send("Could not update record");
-        console.log(result["modifiedCount"]);
         db.close();
       });
   });
